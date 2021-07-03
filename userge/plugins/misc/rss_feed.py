@@ -152,6 +152,20 @@ async def send_rss_to_telegram(client, args: dict, path: str = None):
     else:
         await client.send_message(**args)
 
+        async def check_feed():
+    FEED = feedparser.parse(feed_url)
+    entry = FEED.entries[0]
+
+    msg = entry.title
+    try:
+        app.send_message(username, msg)
+
+    except FloodWait as e:
+        print(f"FloodWait: {e.x} seconds")
+        sleep(e.x)
+    except Exception as e:
+        print(e)
+    return check_feed
 
 @userge.on_cmd(
     "addfeed",
