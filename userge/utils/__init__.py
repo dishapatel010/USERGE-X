@@ -17,7 +17,6 @@ from .sys_tools import SafeDict, get_import_path, secure_text, terminate
 from .tools import (
     clean_obj,
     get_file_id,
-    get_file_id_of_media,
     humanbytes,
     parse_buttons,
     post_to_telegraph,
